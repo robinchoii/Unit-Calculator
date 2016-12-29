@@ -23,17 +23,7 @@ Custom calculator to determine the monthly prices based off how many units you m
 50 Units = $300
 100 Units = $300 + 50 Units * $3 = $450.00
 ```
-##Prerequisite 
 
-Angular 1.0 
-
-```
-add <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script> to your head of your html
-you can also 'bower install --save angular' in your terminal, then uncomment line 11 in index.html. 
-
-Make sure you are only loading 1 version of Angular
-
-```
 
 ##Instructions
 ```
