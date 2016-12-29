@@ -33,6 +33,7 @@
           baseprice_4: 2525,
           baseprice_5: 8525,
         };
+        $scope.units = 100;
         $scope.calculate = function(units) {
           if ($scope.units <= 50) {
             return $scope.cumulativePrices.baseprice
@@ -62,11 +63,11 @@
       <div ng-controller='unitController'class='col-md-12'>
         <h3>How many units do you manage?</h3>
         <div class='form-group'>
-          <input class='form-control' type='text' ng-model='units'>
+          <input class='form-control' type='text' ng-model='units' value={{units}}>
         </div>
         <h3>Your monthly fee:</h3>
         <p>(For unlimited maintenance requests)</p>
-        ${{ calculate(units)}} per month
+        ${{ calculate(units) | number: 2}} per month
       </div>
 
 <!--       <div class='col-md-3 unitInfo' >
