@@ -32,7 +32,7 @@
       <div ng-controller='unitController' class='col-md-6 col-md-offset-3'>
         <h4>How many units do you manage?</h4>
         <div class='form-group'>
-          <input class='form-control' type='text' ng-model='units' value={{units}}>
+          <input class='form-control' type='number' ng-model='units' value={{units}}>
         </div>
         <h4 ng-if="units <= 5000">You Pay: <b>${{ calculate(units) | number: 2}}</b>/month</h4>
         <h4 ng-if="units > 5000">You Pay: <b>Contact Us for a Quote</b></h4>
