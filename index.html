@@ -2,8 +2,6 @@
 <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script>
 <!-- Bootstrap Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-<!-- <link rel="stylesheet" type="text/css" href="calculator.css"> -->
-
 <script>
   var myAppModule = angular.module('calculator',[]);
   myAppModule.controller('calcController', function($scope) {
@@ -39,13 +37,11 @@
     };
     $scope.unitStyle = {
       'font-family': 'adobe-garamond-pro',
-      'font-weight': '400',
       'color': 'rgba(26,26,26,0.7)',
       'box-shadow': '0 0 5px rgba(0,0,0,.3)',
-      'margin-left': '1px',
-      'margin-right': '1px',
       'padding-top': '17px',
-      'padding-bottom': '17px'
+      'padding-bottom': '17px',
+      'margin-bottom': '24px'
     };
     $scope.unitHeadingStyle = {
       'font-size': '20px',
@@ -55,19 +51,39 @@
     $scope.unitDescriptionStyle = {
       'color': 'gray',
     };
+    $scope.unitPricing = {
+      'font-family': 'adobe-garamond-pro',
+      'color': 'rgba(26,26,26,0.7)',
+      'font-size': '18px',
+      'line-height': '18px'
+    };
+    $scope.unitPricingDescription = {
+      'font-family': 'adobe-garamond-pro',
+      'color': 'rgba(26,26,26,0.7)',
+      'font-size': '18px',
+      'line-height': '24px'
+    };
   });
 </script>
-
-<div ng-app='calculator' ng-controller='calcController' class='col-md-6' ng-style="unitStyle">
-    <h4 ng-style='unitHeadingStyle'>How many units do you manage?</h4>
-  <div class='form-group'>
-    <input class='form-control' type='number' ng-model='units' value={{units}}>
+<div ng-app='calculator' class='row'>
+  <div ng-controller='calcController' class='col-md-12' ng-style="unitStyle">
+      <h4 ng-style='unitHeadingStyle'>How many units do you manage?</h4>
+    <div class='form-group'>
+      <input class='form-control' type='number' ng-model='units' value={{units}}>
+    </div>
+      <h4 ng-if="units <= 5000" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month</h4>
+      <h4 ng-if="units > 5000" ng-style='unitHeadingStyle'>You Pay: <b>Contact Us for a Quote</b></h4>
+    <p ng-style='unitDescriptionStyle'>(For unlimited maintenance requests)</p>
   </div>
-    <h4 ng-if="units <= 5000" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month</h4>
-    <h4 ng-if="units > 5000" ng-style='unitHeadingStyle'>You Pay: <b>Contact Us for a Quote</b></h4>
-  <p ng-style='unitDescriptionStyle'>(For unlimited maintenance requests)</p>
+  <div ng-controller='calcController' class='col-md-4' ng-style="unitPricing" >
+    <p><b>50 Units |</b>  $300/month</p>
+    <p><b>51 - 250 Units |</b> $3.00/unit</p>
+    <p><b>251 - 500 Units |</b> $2.50</p>
+    <p><b>501 - 1000 Units |</b> $2.00</p>
+    <p><b>1001 - 5000 Units |</b> $1.50</p>
+    <p><b>5001+ Units |</b> Contact Us for Quote</p>
+  </div>
+  <div ng-controller='calcController' class='col-md-8' ng-style="unitPricingDescription">
+    <p>Our services are priced to increase your profit margins when handling maintenance. We charge a monthly fee based on your total number of units.</p>
+  </div>
 </div>
-
-
-
-
