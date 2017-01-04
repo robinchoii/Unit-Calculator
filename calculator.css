@@ -1,0 +1,16 @@
+#unit {
+  font-family: adobe-garamond-pro, sans-serif;
+  font-weight: 400;
+  color: rgba(26,26,26,0.7);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+  #unit-heading, .unit-price {
+    font-size: 24px;
+  }
+
+#unit-description {
+  color: gray;
+}
+
+
