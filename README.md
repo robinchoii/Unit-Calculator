@@ -3,6 +3,8 @@
 
 Custom calculator to determine the monthly prices based off how many units you manage. Our services are priced to increase your profit margins when handling maintenance. We charge a monthly fee based on your total number of units.
 
+![calculator](/LatchelCalculator.png)
+
 ##Pricing
 
 0 - 50 Units | $300/month
