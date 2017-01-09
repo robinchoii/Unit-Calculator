@@ -1,5 +1,5 @@
-  var myAppModule = angular.module('myApp',[]);
-  myAppModule.controller('unitController', function($scope) {
+var myAppModule = angular.module('calculator',[]);
+  myAppModule.controller('calcController', function($scope) {
     $scope.pricesPerUnit = {
       level_1: 3.00,
       level_2: 2.50,
@@ -29,5 +29,33 @@
       } else {
         return $scope.pricesPerUnit.level_5
       }
-    }
+    };
+    $scope.unitStyle = {
+      'font-family': 'adobe-garamond-pro',
+      'color': 'rgba(26,26,26,0.7)',
+      'box-shadow': '0 0 5px rgba(0,0,0,.3)',
+      'padding-top': '17px',
+      'padding-bottom': '17px',
+      'margin-bottom': '60px'
+    };
+    $scope.unitHeadingStyle = {
+      'font-size': '20px',
+      'font-weight': '600',
+      'line-height': '24px'
+    };
+    $scope.unitDescriptionStyle = {
+      'color': 'gray',
+    };
+    $scope.unitPricing = {
+      'font-family': 'adobe-garamond-pro',
+      'color': 'rgba(26,26,26,0.7)',
+      'font-size': '18px',
+      'line-height': '18px'
+    };
+    $scope.unitPricingDescription = {
+      'font-family': 'adobe-garamond-pro',
+      'color': 'rgba(26,26,26,0.7)',
+      'font-size': '18px',
+      'line-height': '24px'
+    };
   });
