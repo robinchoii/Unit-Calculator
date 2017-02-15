@@ -1,3 +1,5 @@
+<!-- mobile responsive -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- angular cdn -->
 <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js'></script>
 <!-- Bootstrap Latest compiled and minified CSS -->
@@ -35,6 +37,9 @@
         return $scope.cumulativePrices.baseprice_5 + ($scope.units - 5000) * $scope.pricesPerUnit.level_5
       }
     };
+    $scope.sliderToInt = function() {
+      $scope.units = parseInt($scope.units)
+    };
     $scope.unitStyle = {
       'font-family': 'adobe-garamond-pro',
       'color': 'rgba(26,26,26,0.7)',
@@ -69,10 +74,13 @@
   <div ng-controller='calcController' class='col-md-12' ng-style="unitStyle">
       <h4 ng-style='unitHeadingStyle'>How many units do you manage?</h4>
     <div class='form-group'>
-      <input class='form-control' type='text' min='0' inputmode='numeric' pattern="[0-9]*" ng-model='units'  value={{units}}>
-      <input class='slider' type='range' ng-model='units' min='50' max="5000">
+      <input class='form-control' type='number' min='0' inputmode='numeric' pattern="[0-9]*" ng-model='units' value={{units}}>
+    </div>
+    <div class='form-group'>
+      <input class='slider' type='range' ng-model='units' min='50' max="5000" ng-change="sliderToInt()">
     </div>
       <h4 ng-if="units > 0" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month | $ {{ calculate(units) / units | number:2}}/unit</h4>
+      <h4 ng-if="units === NaN" ng-style='unitHeadingStyle'>You Pay: <b>Invalid number of units</b></h4>
     <p ng-style='unitDescriptionStyle'>(For unlimited maintenance requests)</p>
   </div>
 </div>
