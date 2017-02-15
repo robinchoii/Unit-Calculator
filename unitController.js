@@ -2,17 +2,17 @@ var myAppModule = angular.module('calculator',[]);
   myAppModule.controller('calcController', function($scope) {
     $scope.pricesPerUnit = {
       level_1: 3.00,
-      level_2: 2.50,
-      level_3: 2.00,
-      level_4: 1.50,
-      level_5: "Contact Us for a Quote"
+      level_2: 2.75,
+      level_3: 2.50,
+      level_4: 2.25,
+      level_5: 2.00
     };
     $scope.cumulativePrices = {
       baseprice: 300,
       baseprice_2: 900,
-      baseprice_3: 1525,
-      baseprice_4: 2525,
-      baseprice_5: 8525,
+      baseprice_3: 1587.50,
+      baseprice_4: 2837.50,
+      baseprice_5: 11837.50
     };
     $scope.units = 100;
     $scope.calculate = function(units) {
@@ -27,7 +27,7 @@ var myAppModule = angular.module('calculator',[]);
       } else if ($scope.units > 1000 && $scope.units <= 5000) {
         return $scope.cumulativePrices.baseprice_4 + ($scope.units - 1000) * $scope.pricesPerUnit.level_4
       } else {
-        return $scope.pricesPerUnit.level_5
+        return $scope.cumulativePrices.baseprice_5 + (scope.units - 5000) * $scope.pricesPerUnit.level_5
       }
     };
     $scope.unitStyle = {
