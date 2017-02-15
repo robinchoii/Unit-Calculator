@@ -69,8 +69,8 @@
   <div ng-controller='calcController' class='col-md-12' ng-style="unitStyle">
       <h4 ng-style='unitHeadingStyle'>How many units do you manage?</h4>
     <div class='form-group'>
-      <input class='form-control' type='number' ng-model='units' value={{units}}>
-      <input class='slider' type='range' ng-model='units' ng-min='min' ng-max='max'>
+      <input class='form-control' type='text' min='0' inputmode='numeric' pattern="[0-9]*" ng-model='units'  value={{units}}>
+      <input class='slider' type='range' ng-model='units' min='50' max="5000">
     </div>
       <h4 ng-if="units > 0" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month | $ {{ calculate(units) / units | number:2}}/unit</h4>
     <p ng-style='unitDescriptionStyle'>(For unlimited maintenance requests)</p>
