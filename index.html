@@ -7,17 +7,17 @@
   myAppModule.controller('calcController', function($scope) {
     $scope.pricesPerUnit = {
       level_1: 3.00,
-      level_2: 2.50,
-      level_3: 2.00,
-      level_4: 1.50,
-      level_5: "Contact Us for a Quote"
+      level_2: 2.75,
+      level_3: 2.50,
+      level_4: 2.25,
+      level_5: 2.00
     };
     $scope.cumulativePrices = {
       baseprice: 300,
       baseprice_2: 900,
-      baseprice_3: 1525,
-      baseprice_4: 2525,
-      baseprice_5: 8525,
+      baseprice_3: 1587.50,
+      baseprice_4: 2837.50,
+      baseprice_5: 11837.50,
     };
     $scope.units = 100;
     $scope.calculate = function(units) {
@@ -31,8 +31,8 @@
         return $scope.cumulativePrices.baseprice_3 + ($scope.units - 500) * $scope.pricesPerUnit.level_3
       } else if ($scope.units > 1000 && $scope.units <= 5000) {
         return $scope.cumulativePrices.baseprice_4 + ($scope.units - 1000) * $scope.pricesPerUnit.level_4
-      } else {
-        return $scope.pricesPerUnit.level_5
+      } else if ($scope.units > 5000) {
+        return $scope.cumulativePrices.baseprice_5 + ($scope.units - 5000) * $scope.pricesPerUnit.level_5
       }
     };
     $scope.unitStyle = {
@@ -70,20 +70,9 @@
       <h4 ng-style='unitHeadingStyle'>How many units do you manage?</h4>
     <div class='form-group'>
       <input class='form-control' type='number' ng-model='units' value={{units}}>
+      <input class='slider' type='range' ng-model='units' ng-min='min' ng-max='max'>
     </div>
-      <h4 ng-if="units <= 5000" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month</h4>
-      <h4 ng-if="units > 5000" ng-style='unitHeadingStyle'>You Pay: <b>Contact Us for a Quote</b></h4>
+      <h4 ng-if="units > 0" ng-style='unitHeadingStyle'>You Pay: <b>$ {{ calculate(units) | number: 2}}</b>/month | $ {{ calculate(units) / units | number:2}}/unit</h4>
     <p ng-style='unitDescriptionStyle'>(For unlimited maintenance requests)</p>
-  </div>
-  <div ng-controller='calcController' class='col-md-4' ng-style="unitPricing" >
-    <p><b>50 Units |</b>  $300/month</p>
-    <p><b>51 - 250 Units |</b> $3.00/unit</p>
-    <p><b>251 - 500 Units |</b> $2.50</p>
-    <p><b>501 - 1000 Units |</b> $2.00</p>
-    <p><b>1001 - 5000 Units |</b> $1.50</p>
-    <p><b>5001+ Units |</b> Contact Us for Quote</p>
-  </div>
-  <div ng-controller='calcController' class='col-md-8' ng-style="unitPricingDescription">
-    <p>Our services are priced to increase your profit margins when handling maintenance. We charge a monthly fee based on your total number of units.</p>
   </div>
 </div>
